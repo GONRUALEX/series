@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { Serie } from 'src/app/shared/models/serie';
+import { PageRequest, Serie } from 'src/app/shared/models/serie';
 import { Observable } from 'rxjs';
+import { Gener } from 'src/app/shared/models/master-table';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,11 +12,11 @@ export class SeriesService {
   private endPoint = environment.api.series;
   constructor(private http: HttpClient) { }
 
-  public getList(): Observable<Serie[]> {
-    const endPoint = this.endPoint.list;
+  public getList(id:string): Observable<PageRequest> {
+    const endPoint = this.endPoint.list
+    .replace('{id}', id);
     const url = this.baseUrl + endPoint;
-
-    return this.http.get<Serie[]>(url);
+    return this.http.get<PageRequest>(url);
   }
 
   public getById(idSerie: number): Observable<Serie> {
@@ -25,9 +26,9 @@ export class SeriesService {
     return this.http.get<Serie>(url);
   }
 
-  public getGenerList(): Observable<Serie> {
+  public getGenerList(): Observable<Gener> {
     const endpoint = this.endPoint.listGener;
     const url = this.baseUrl + endpoint;
-    return this.http.get<Serie>(url);
+    return this.http.get<Gener>(url);
   }
 }

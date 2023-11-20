@@ -4,7 +4,7 @@ export const environment = {
         baseUrl:"https://api.themoviedb.org/3",
         series:{
             listGener: '/genre/tv/list?language=en',
-            list: '/movie/movie_id/lists?language=en-US&page=1',
+            list: '/movie/{id}/lists?language=en-US&page=1',
             search: 'search',        
             getById: '/movie/{id}?language=en-US'
         },

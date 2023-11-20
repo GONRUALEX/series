@@ -1,4 +1,8 @@
 export interface MasterTable{
     id?: number;
-    description?: string;
+    name?: string;
+}
+
+export interface Gener{
+    genres?:[MasterTable]
 }
