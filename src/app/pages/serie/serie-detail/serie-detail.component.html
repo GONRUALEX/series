@@ -1,11 +1,35 @@
-<div class="card text-center mb-3" >
-    <!--img [src]="product.imageUrl" class="card-img-top" alt="..."-->
-    <div class="card-body">
-      <h5 class="card-title">{{product.name}}</h5>
-      <p class="card-text">{{product.description}}</p>
-      <button class="btn btn-outline-success btn-add" >
-        <i class="fas fa-cart-plus"></i>Añadir a carrito
-      </button>
-    </div>
-  </div>
-  
+<div class="card text-center mb-3">
+	<img [src]="environmentApi.api.baseUrl+product.poster_path"
+		class="card-img-top"
+		alt="...">
+	<div class="card-body">
+		<h5 class="card-title">{{product.title}}</h5>
+		<p class="card-text">
+			{{product.overview}}
+		</p>
+		<p class="card-text">
+			{{product.original_language}}
+		</p>
+		<button class="btn btn-outline-success btn-add" (click)="showDialog()">
+			<i class="pi pi-eye"></i>
+			&nbsp; Ver detalle
+		</button>
+	</div>
+</div>
+
+<p-dialog [(visible)]="visible"
+	[style]="{width: '50vw'}"
+	header="Header">
+  <p-card header="Advanced Card" subheader="Card Subheader" >
+    <ng-template pTemplate="header">
+        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+    </ng-template>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+        quas!
+    </p>
+    <ng-template pTemplate="footer">
+       
+    </ng-template>
+</p-card>
+</p-dialog>

@@ -1,17 +1,20 @@
-<app-menu [items]="items" (gener)="gener($event)"></app-menu>
+<app-menu [items]="items"
+	(gener)="gener($event)"></app-menu>
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-12 col-lg-9">
-      <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let product of products">
-          <app-serie-detail [product]="product"></app-serie-detail>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<ngx-loading
-[show]="loading"
-[config]="{ backdropBorderRadius: '3px' }"
 
-></ngx-loading>
+	<div class="row">
+		<div *ngFor="let product of products"
+			class="col-sm-6 col-md-6 col-lg-3">
+			<app-serie-detail [product]="product"></app-serie-detail>
+		</div>
+	</div>
+</div>
+<div class="card flex justify-content-center">
+	<p-paginator [first]="first"
+		[rows]="rows"
+		[totalRecords]="totalRecords"
+		[rowsPerPageOptions]="[20]"
+		(onPageChange)="onPageChange($event)"></p-paginator>
+</div>
+<ngx-loading [show]="loading"
+[config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

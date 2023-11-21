@@ -12,9 +12,10 @@ export class SeriesService {
   private endPoint = environment.api.series;
   constructor(private http: HttpClient) { }
 
-  public getList(id:string): Observable<PageRequest> {
+  public getList(id:string, first:number): Observable<PageRequest> {
     const endPoint = this.endPoint.list
-    .replace('{id}', id);
+    .replace('{id}', id)
+    .replace('{first}', first.toString());
     const url = this.baseUrl + endPoint;
     return this.http.get<PageRequest>(url);
   }

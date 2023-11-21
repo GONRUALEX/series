@@ -15,7 +15,6 @@ export class MenuComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("lklk")
     if (changes['items']) {
       this.items = this.items?.map((element)=>{
         return {...element, command: () => this.clickUser(element)}
