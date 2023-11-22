@@ -28,6 +28,8 @@ export class SerieComponent implements OnInit {
         return { "id": category.id?.toString(), "label": category.name };
       }) : [];
     })
+
+    this.gener();
   }
 
   gener(element: MenuItem = this.categorySelected) {
@@ -35,10 +37,8 @@ export class SerieComponent implements OnInit {
     if (element!=this.categorySelected){
       this.page = 1;
     }
-    console.log(this.first, "first")
-    this.seriesService.getList(element.id!, this.page).subscribe({
+    this.seriesService.getList(this.page).subscribe({
       next: (data: PageRequest) => {
-        console.log(data)
         this.products = data.results!;
         this.totalRecords = data.total_results!;
         this.loading = false;

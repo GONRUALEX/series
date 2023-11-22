@@ -10,7 +10,7 @@
 		<p class="card-text">
 			{{product.original_language}}
 		</p>
-		<button class="btn btn-outline-success btn-add" (click)="showDialog()">
+		<button class="btn btn-outline-success btn-add" (click)="showDialog(product.id!)">
 			<i class="pi pi-eye"></i>
 			&nbsp; Ver detalle
 		</button>
@@ -18,18 +18,23 @@
 </div>
 
 <p-dialog [(visible)]="visible"
-	[style]="{width: '50vw'}"
-	header="Header">
-  <p-card header="Advanced Card" subheader="Card Subheader" >
+	[style]="{width: '50vw'}" [modal]="true">
+  <p-card [header]="selectedSerie.title" [subheader]="selectedSerie.release_date" >
     <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+        <img  [src]="selectedSerie.poster_path" />
     </ng-template>
     <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-        quas!
+        {{selectedSerie.overview}}
     </p>
     <ng-template pTemplate="footer">
-       
+		<p style="color:cadetblue;font-weight:600">Géneros</p>
+       <span *ngFor="let gener of selectedSerie.genres">
+			{{gener.name}},
+	   </span>
+	   <p style="color:cadetblue;font-weight:600">Web</p>
+       <span>
+			{{selectedSerie.original_language}},
+	   </span>
     </ng-template>
 </p-card>
 </p-dialog>

@@ -6,7 +6,7 @@ export const environment = {
             listGener: '/genre/tv/list?language=en',
             list: '/discover/movie?include_adult=false&include_video=false&language=en-US&page={first}&sort_by=popularity.desc',
             search: 'search',        
-            getById: '/movie/{id}?language=en-US'
+            getById: '/movie/{id}'
         },
     }
 
